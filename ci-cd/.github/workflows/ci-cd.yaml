@@ -1,0 +1,25 @@
+name: Code Review CI/CD
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm install
+      
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Install Python Dependencies
+        run: |
+          cd ai-engine
+          pip install -r requirements.txt
